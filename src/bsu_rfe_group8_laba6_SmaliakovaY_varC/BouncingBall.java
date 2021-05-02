@@ -90,6 +90,15 @@ public class BouncingBall implements Runnable {
                     x += speedX;
                     y += speedY;
                 }
+                for (BouncingBall ball: field.balls) {
+                    double len =Math.sqrt((x-ball.x)*(x-ball.x)+(y-ball.y)*(y-ball.y));
+                    if(len<=radius+ball.radius){
+                        speedX=-speedX;
+                        speedY=-speedY;
+                        ball.speedX=-ball.speedX;
+                        ball.speedY=-ball.speedY;
+                    }
+                }
                 // Засыпаем на X миллисекунд, где X определяется
                 // исходя из скорости
                 // Скорость = 1 (медленно), засыпаем на 15 мс.

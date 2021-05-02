@@ -1,7 +1,6 @@
 package bsu_rfe_group8_laba6_SmaliakovaY_varC;
 
-import java.awt.BorderLayout;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -36,12 +35,14 @@ public class MainFrame extends JFrame {
         JMenu ballMenu = new JMenu("Мячи");
         Action addBallAction = new AbstractAction("Добавить мяч") {
             public void actionPerformed(ActionEvent event) {
-                field.addBall();
-                if (!pauseMenuItem.isEnabled() &&
-                        !resumeMenuItem.isEnabled()) {
-                    // Ни один из пунктов меню не являются
-                    // доступными - сделать доступным "Паузу"
-                    pauseMenuItem.setEnabled(true);
+                if (field.balls.size() != 8) {
+                    field.addBall();
+                    if (!pauseMenuItem.isEnabled() &&
+                            !resumeMenuItem.isEnabled()) {
+                        // Ни один из пунктов меню не являются
+                        // доступными - сделать доступным "Паузу"
+                        pauseMenuItem.setEnabled(true);
+                    }
                 }
             }
         };
